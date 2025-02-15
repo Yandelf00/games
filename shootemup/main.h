@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include "structs.h"
+#include "Game.h"
+
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
