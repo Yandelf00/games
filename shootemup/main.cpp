@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include "main.h"
 
@@ -10,7 +11,7 @@ Game* g_game = 0;
 int main(int argc, char *argv[])
 {
     g_game = new Game();
-    g_game->init("GameClass", 100, 100, 640, 480, 0);
+    g_game->init("GameClass", 100, 100, 480, 640, 0);
 
     while(g_game->running())
     {
