@@ -17,8 +17,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
             if(m_pRenderer != 0)
             {
-                // SDL_Surface* pTemSurface = SDL_LoadBMP("C:/Users/surfa/OneDrive/Bureau/git_repos/games/shootemup/assets/shooter.bmp");
-                SDL_Surface* pTemSurface = IMG_Load("assets/secondshooter.png");
+                SDL_Surface* pTemSurface = IMG_Load("assets/_Attack.png");
                 m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTemSurface); 
                 SDL_FreeSurface(pTemSurface);
 
@@ -27,12 +26,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
                     SDL_FreeSurface(pTemSurface);
                     return false;
                 }
-                SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+                // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+                m_sourceRectangle.w = 128;
+                m_sourceRectangle.h = 80;
                 m_destinationRectangle.x = m_sourceRectangle.x = 0;
                 m_destinationRectangle.y = m_sourceRectangle.y = 0;
                 m_destinationRectangle.w = m_sourceRectangle.w;
                 m_destinationRectangle.h = m_sourceRectangle.h;
-                // SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 0);
+                SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 0);
             }
             else
             {
@@ -87,5 +88,5 @@ void Game::clean()
 
 void Game::update()
 {
-
+    m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
 }
