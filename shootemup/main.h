@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include "Game.h"
+#include "TextureManager.h"
 
 
 const int WIDTH = 800;

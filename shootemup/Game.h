@@ -2,6 +2,7 @@
 #define __Game__
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "TextureManager.h"
 
 
 class  Game
@@ -20,9 +21,10 @@ class  Game
         SDL_Window* m_pWindow;
         SDL_Renderer* m_pRenderer;
 
-        SDL_Texture* m_pTexture; // the new SDL texture variable, basically for images
-        SDL_Rect m_sourceRectangle; //the first rectangle
-        SDL_Rect m_destinationRectangle; //the second rectangle
+        // SDL_Texture* m_pTexture; // the new SDL texture variable, basically for images
+        // SDL_Rect m_sourceRectangle; //the first rectangle
+        // SDL_Rect m_destinationRectangle; //the second rectangle
+        int m_currentFrame;
         bool m_bRunning;
 };
 

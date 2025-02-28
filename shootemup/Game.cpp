@@ -17,23 +17,24 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
             if(m_pRenderer != 0)
             {
-                SDL_Surface* pTemSurface = IMG_Load("assets/_Attack.png");
-                m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTemSurface); 
-                SDL_FreeSurface(pTemSurface);
+                TheTextureManager::Instance()->load("assets/_Attack.png", "animate", m_pRenderer);
+                // SDL_Surface* pTemSurface = IMG_Load("assets/_Attack.png");
+                // m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTemSurface); 
+                // SDL_FreeSurface(pTemSurface);
 
-                if (!m_pTexture) {
-                    std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
-                    SDL_FreeSurface(pTemSurface);
-                    return false;
-                }
-                // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-                m_sourceRectangle.w = 128;
-                m_sourceRectangle.h = 80;
-                m_destinationRectangle.x = m_sourceRectangle.x = 0;
-                m_destinationRectangle.y = m_sourceRectangle.y = 0;
-                m_destinationRectangle.w = m_sourceRectangle.w;
-                m_destinationRectangle.h = m_sourceRectangle.h;
-                SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 0);
+                // if (!m_pTexture) {
+                //     std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
+                //     SDL_FreeSurface(pTemSurface);
+                //     return false;
+                // }
+                // // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+                // m_sourceRectangle.w = 128;
+                // m_sourceRectangle.h = 80;
+                // m_destinationRectangle.x = m_sourceRectangle.x = 0;
+                // m_destinationRectangle.y = m_sourceRectangle.y = 0;
+                // m_destinationRectangle.w = m_sourceRectangle.w;
+                // m_destinationRectangle.h = m_sourceRectangle.h;
+                SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
             }
             else
             {
@@ -58,7 +59,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
 
 void Game::render(){
     SDL_RenderClear(m_pRenderer); //clear the renderer and draw color
-    SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+    // SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+    // SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+    TheTextureManager::Instance()->draw("animate",0, 0, 128, 82, m_pRenderer);
+    TheTextureManager::Instance()->drawFrame("animate",100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
     SDL_RenderPresent(m_pRenderer); //draw to the screen
 }
 
@@ -88,5 +92,6 @@ void Game::clean()
 
 void Game::update()
 {
-    m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+   // m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+    m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
