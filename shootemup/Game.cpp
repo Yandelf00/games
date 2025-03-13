@@ -18,22 +18,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
             if(m_pRenderer != 0)
             {
                 TheTextureManager::Instance()->load("assets/_Attack.png", "animate", m_pRenderer);
-                // SDL_Surface* pTemSurface = IMG_Load("assets/_Attack.png");
-                // m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTemSurface); 
-                // SDL_FreeSurface(pTemSurface);
-
-                // if (!m_pTexture) {
-                //     std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
-                //     SDL_FreeSurface(pTemSurface);
-                //     return false;
-                // }
-                // // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-                // m_sourceRectangle.w = 128;
-                // m_sourceRectangle.h = 80;
-                // m_destinationRectangle.x = m_sourceRectangle.x = 0;
-                // m_destinationRectangle.y = m_sourceRectangle.y = 0;
-                // m_destinationRectangle.w = m_sourceRectangle.w;
-                // m_destinationRectangle.h = m_sourceRectangle.h;
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
             }
             else
