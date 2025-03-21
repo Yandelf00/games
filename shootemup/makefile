@@ -7,7 +7,7 @@ INCLUDE_DIR = $(SRC_DIR)/Include
 LIB_DIR = $(SRC_DIR)/lib
 
 # Source files
-SRCS = main.cpp Game.cpp TextureManager.cpp
+SRCS = main.cpp Game.cpp TextureManager.cpp GameObject.cpp Player.cpp
 
 # Output executable
 TARGET = main

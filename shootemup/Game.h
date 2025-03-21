@@ -3,6 +3,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
 
 class  Game
@@ -26,6 +28,9 @@ class  Game
         // SDL_Rect m_destinationRectangle; //the second rectangle
         int m_currentFrame;
         bool m_bRunning;
+
+        GameObject m_go;
+        Player m_player;
 };
 
 
