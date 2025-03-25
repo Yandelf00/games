@@ -17,6 +17,11 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, bo
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
             if(m_pRenderer != 0)
             {
+                m_player = new Player();
+                m_enemy1 = new Enemy();
+                m_enemy2 = new Enemy();
+                m_enemy3 = new Enemy();
+                
                 m_go.load(100, 100, 128, 82, "animate");
                 m_player.load(300, 300, 128, 82, "animate");
 
@@ -48,7 +53,7 @@ void Game::render(){
     SDL_RenderClear(m_pRenderer); //clear the renderer and draw color
     // SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
     // SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
-    TheTextureManager::Instance()->drawFrame("animate",100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+    // TheTextureManager::Instance()->drawFrame("animate",100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
     m_go.draw(m_pRenderer);
     m_player.draw(m_pRenderer);
     SDL_RenderPresent(m_pRenderer); //draw to the screen
@@ -80,7 +85,7 @@ void Game::clean()
 
 void Game::update()
 {
-   // m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+//    m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
     m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
     m_go.update();
     m_player.update();
