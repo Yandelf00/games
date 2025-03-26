@@ -6,6 +6,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 
 
 class  Game
@@ -18,6 +19,7 @@ class  Game
         void update();
         void handleEvent();
         void clean();
+        // void draw();
 
         bool running(){ return m_bRunning; }
     private: 
@@ -30,8 +32,14 @@ class  Game
         int m_currentFrame;
         bool m_bRunning;
 
-        GameObject m_go;
-        Player m_player;
+        GameObject* m_go;
+        GameObject* m_player;
+        GameObject* m_enemy;
+        std::vector<GameObject *> m_gameObjects;
+        // GameObject* m_player;
+        // GameObject* m_enemy1;
+        // GameObject* m_enemy2;
+        // GameObject* m_enemy3;
 };
 
 
