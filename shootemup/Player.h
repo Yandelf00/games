@@ -2,13 +2,17 @@
 #define __PLAYER__
 
 #include "GameObject.h"
+#include "SDLGameObject.h"
+#include "LoaderParams.h"
 
-class Player : public GameObject //inherents from GameObject
+class Player : public SDLGameObject //inherents from GameObject
 {
     public : 
-        void load(int x, int y, int width, int height, std::string textureID);
-        void draw(SDL_Renderer* p_Renderer);
-        void update(); 
+
+        Player(const LoaderParams* pParams);
+        virtual void draw();
+        virtual void update();
+        virtual void clean();
 };
 
 #endif
